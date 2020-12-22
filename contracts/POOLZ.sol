@@ -4,7 +4,7 @@ import '@openzeppelin/contracts/token/ERC20/ERC20Detailed.sol';
 
 contract POOLZ is ERC20Capped, ERC20Detailed{
        constructor()
-       ERC20Detailed("Poolz.finance Token","POOLZ",18)
+       ERC20Detailed("Poolz Finance","POOLZ",18)
        ERC20Capped(5000000*10**18)
        public {}     
 }
