@@ -2,9 +2,11 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/utils/Context.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Capped.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "./Roles.sol";
 
-abstract contract ERC20Mintable is Context {
+abstract contract ERC20Mintable is Context, ERC20Capped, ERC20Burnable {
     using Roles for Roles.Role;
 
     event MinterAdded(address indexed account);
@@ -28,14 +30,6 @@ abstract contract ERC20Mintable is Context {
         return _minters.has(account);
     }
 
-    function addMinter(address account) external onlyMinter {
-        _addMinter(account);
-    }
-
-    function renounceMinter() external onlyMinter {
-        _removeMinter(_msgSender());
-    }
-
     function _addMinter(address account) internal {
         _minters.add(account);
         emit MinterAdded(account);
@@ -44,5 +38,12 @@ abstract contract ERC20Mintable is Context {
     function _removeMinter(address account) internal {
         _minters.remove(account);
         emit MinterRemoved(account);
+    }
+
+    function _mint(
+        address account,
+        uint256 amount
+    ) internal virtual override(ERC20Capped, ERC20) {
+        super._mint(account, amount);
     }
 }
