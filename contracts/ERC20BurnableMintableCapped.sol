@@ -3,9 +3,14 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Capped.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
+import "poolz-helper-v2/contracts/GovManager.sol";
 
-abstract contract ERC20BurnableMintableCapped is ERC20Capped, ERC20Burnable {
-    function mint(address to, uint256 amount) public virtual {
+abstract contract ERC20BurnableMintableCapped is
+    ERC20Capped,
+    ERC20Burnable,
+    GovManager
+{
+    function mint(address to, uint256 amount) external virtual onlyOwnerOrGov {
         _mint(to, amount);
     }
 
