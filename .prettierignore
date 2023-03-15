@@ -1,0 +1,10 @@
+build
+coverage
+README.md
+coverage.json
+package-lock.json
+.vscode-test/
+out/
+dist/
+test-fixtures/
+node_modules/

@@ -15,9 +15,9 @@ contract POOLZ is ERC20Capped, ERC20Burnable {
     }
 
     function _mint(
-        address _account,
-        uint256 _amount
+        address account,
+        uint256 amount
     ) internal virtual override(ERC20Capped, ERC20) {
-        super._mint(_account, _amount);
+        super._mint(account, amount);
     }
 }
