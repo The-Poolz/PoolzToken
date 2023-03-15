@@ -1,7 +1,7 @@
 const Token = artifacts.require("./POOLZ.sol");
 
 const name = 'Poolz.finance Token';
-const symbol = 'POOLZ';
+const symbol = '$POOLZ';
 const decimals = 6;
 const amount = 100 * 10 ** decimals;
 
