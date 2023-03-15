@@ -2,7 +2,7 @@ const Token = artifacts.require("./POOLZ.sol")
 const truffleAssert = require("truffle-assertions")
 
 const name = "Poolz.finance Token"
-const symbol = "$POOLZ"
+const symbol = "POOLX"
 const decimals = 6
 const amount = 100 * 10 ** decimals
 
