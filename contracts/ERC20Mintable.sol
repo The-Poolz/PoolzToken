@@ -28,11 +28,11 @@ abstract contract ERC20Mintable is Context {
         return _minters.has(account);
     }
 
-    function addMinter(address account) public onlyMinter {
+    function addMinter(address account) external onlyMinter {
         _addMinter(account);
     }
 
-    function renounceMinter() public {
+    function renounceMinter() external onlyMinter {
         _removeMinter(_msgSender());
     }
 
