@@ -1,4 +1,4 @@
-const Token = artifacts.require("./POOLZ.sol")
+const Token = artifacts.require("./POOLX.sol")
 const truffleAssert = require("truffle-assertions")
 
 const name = "Poolz.finance Token"
