@@ -1,6 +1,7 @@
 const Token = artifacts.require("./POOLX.sol")
 const truffleAssert = require("truffle-assertions")
 const BigNumber = require("bignumber.js")
+const { constants } = require("@openzeppelin/test-helpers")
 
 contract("Token", (accounts) => {
     const name = "Poolz Finance"
@@ -84,6 +85,16 @@ contract("Token", (accounts) => {
             assert.equal(accountAddress, accounts[1], "invalid account log event")
             const isMinter = await token.isMinter(accounts[1])
             assert.equal(isMinter, false, "user doens't have minter role")
+        })
+
+        it("account already has role", async () => {
+            const minterAddress = accounts[9]
+            await token.addMinter(minterAddress)
+            await truffleAssert.reverts(token.addMinter(minterAddress), "Roles: account already has role")
+        })
+
+        it("account is the zero address", async () => {
+            await truffleAssert.reverts(token.addMinter(constants.ZERO_ADDRESS), "Roles: account is the zero address")
         })
     })
 
