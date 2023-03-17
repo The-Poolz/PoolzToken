@@ -68,6 +68,10 @@ contract("Token", (accounts) => {
                 token.mint(accounts[1], amount, { from: accounts[1] }),
                 "MinterRole: caller does not have the Minter role"
             )
+            await truffleAssert.reverts(
+                token.renounceMinter({ from: accounts[8] }),
+                "MinterRole: caller does not have the Minter role"
+            )
         })
 
         it("add minter role", async () => {
@@ -90,11 +94,14 @@ contract("Token", (accounts) => {
         it("account already has role", async () => {
             const minterAddress = accounts[9]
             await token.addMinter(minterAddress)
-            await truffleAssert.reverts(token.addMinter(minterAddress), "Roles: account already has role")
+            await truffleAssert.reverts(token.addMinter(minterAddress), "MinterRole: account already has role")
         })
 
         it("account is the zero address", async () => {
-            await truffleAssert.reverts(token.addMinter(constants.ZERO_ADDRESS), "Roles: account is the zero address")
+            await truffleAssert.reverts(
+                token.addMinter(constants.ZERO_ADDRESS),
+                "MinterRole: account is the zero address"
+            )
         })
     })
 
