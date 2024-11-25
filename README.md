@@ -5,6 +5,9 @@
 #### [**The Poolz**](https://poolz.finance/) official Token
 The **POOLX** smart contract implements the **ERC20** standard. In addition to the default functions, the contract has the features of minting, burning, and capped the number of tokens. The token works in tandem with the [MultiSig](https://github.com/The-Poolz/MultiSig/) contract to provide a secure minting system. 
  
+### Audit report
+The audit report is available here: [Audit Report](https://docs.google.com/document/d/1g6KBwTM-8o2Dn20ma3XUUhYDLoF8ZQlvB-VNM9AFbUU/edit?tab=t.0)
+ 
  ### Navigation
 
 - [Installation](#installation)
